@@ -1,0 +1,10 @@
+node_modules
+
+.env
+
+cache
+
+test
+
+
+frontend/node_modules
