@@ -22,6 +22,7 @@ const Nav = (props) => {
         console.log(accounts[0]);
         setWalletAddress(accounts[0]);
         props.getAllReportsUI(accounts[0]);
+        props.getMinted(accounts[0]);
       }catch(err){
         console.error(err);
       }

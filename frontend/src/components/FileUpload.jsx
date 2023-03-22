@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import dotenv from 'dotenv';
-require("dotenv").config();
+
 
 const FileUpload = (props) => {
 
@@ -35,8 +34,8 @@ const FileUpload = (props) => {
       
         'Content-Type': 'multipart/form-data',
         'Access-Control-Allow-Origin': '*',
-        'pinata_api_key': process.env.PINATA_API_KEY,
-        'pinata_secret_api_key': process.env.PINATA_SECRETE_KEY,
+        'pinata_api_key': '514ab3322c258f240160',
+        'pinata_secret_api_key':'b556f0686becfbae53d6202597989a3afb7173767eebf8340d33a883054e7d26',
       }
     });
 
@@ -78,6 +77,8 @@ const FileUpload = (props) => {
       </label>
 
       <button type="submit" className='p-2 font-semibold text-white bg-blue-400 rounded-md' >Upload</button>
+
+      
     </form>
   );
 };

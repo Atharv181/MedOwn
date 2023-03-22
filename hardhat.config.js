@@ -1,6 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
-import dotenv from 'dotenv';
-require("dotenv").config();
+
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -15,8 +14,8 @@ module.exports = {
     },
 
     mumbai: {
-      url:process.env.QUICKNODE_URL,
-      accounts: [process.env.METAMASK_PRIVATE_KEY],
+      url:"https://cool-summer-telescope.matic-testnet.discover.quiknode.pro/474819f211a6f73e3ab58890cf82ed75e496e90f/",
+      accounts: ['1f3fdcd67df8d6ccad6c5492148b30d176d50418535484bff6dec182b83cb7c9'],
     },
     
     // goerli: {

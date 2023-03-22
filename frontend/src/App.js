@@ -27,23 +27,15 @@ function App() {
   const [hashes, sethashes] = useState([]);
 
  
+  const [minted,setminted] = useState([]); 
 
   const { ethereum } = window;
 
-  useEffect(() => {
+        useEffect(() => {
     const loadProvider = async () => {
        let contractAddress = "0xd0ecF06D6Aa3Bd0ECd737F19081e6Bd029A1Fb3b";
-       let contract1Address = "0x64D8334AaDd2779027CfC91B77C9e69d2d6C45c7";
-      // const url = "https://cool-summer-telescope.matic-testnet.discover.quiknode.pro/474819f211a6f73e3ab58890cf82ed75e496e90f/";
-      // const provider = new ethers.providers.JsonRpcProvider(url);
-      // const contract = new ethers.Contract(
-      //   contractAddress,
-      //   addContent.abi,
-      //   provider
-      // );
-      // setContract(contract);
-      // setProvider(provider);
-      // console.log(contract);
+       let contract1Address = "0xe7c9ae474dc81E0D609b775C1511014197B38D03";
+    
       try {
       
         if (ethereum) {
@@ -69,7 +61,7 @@ function App() {
 
     };
     loadProvider();
-  }, []);
+        }, []);
 
  
 
@@ -92,7 +84,7 @@ function App() {
           
           
           const metadataURI = `https://gateway.pinata.cloud/ipfs/${inewHash}`;
-          
+        
           
           const signer = contract1.connect(provider.getSigner());
 
@@ -102,18 +94,30 @@ function App() {
           const tokenId = (z).toNumber() + 1;
           console.log(tokenId)
 
-          const receipt = await signer.mint(metadataURI, tokenId);
+          const receipt = await signer.mint(metadataURI, tokenId,inewHash);
           const tx = await receipt.wait();
           console.log(tx);
+
+           
         };
 
+
+    
+        
+        const getMinted  = async () => {
+          const mints = await contract1.getAllMinted();
+          setminted(mints);
+        }
+        
       
         const getAllReportsUI = async (addr) =>{
           const hash = await contract.getAllReports(addr);
           sethashes(hash);
         };
+
+        console.log(hashes)
     
-        console.log(hashes);
+       
         
   
       
@@ -127,13 +131,13 @@ function App() {
     < div className = 'flex-col '>
 
       
-      <Nav getAllReportsUI ={getAllReportsUI}></Nav>
+      <Nav getAllReportsUI ={getAllReportsUI} getMinted= {getMinted}></Nav>
 
       <Doc></Doc>
 
       <FileUpload UploadFile={UploadFile}></FileUpload>
       
-      <Patient hashes = {hashes} mintNFT= {mintNFT}></Patient>
+      <Patient hashes = {hashes} mintNFT= {mintNFT} minted={minted}></Patient>
 
       {/* <CardThree> </CardThree> */}
 
