@@ -10,6 +10,10 @@ contract addContent{
     // bytes[] public IpfsHash;
     mapping(address => string[]) public Reports;
 
+    constructor() payable{
+       
+    } 
+
 
     function addReports(address _addr, string memory _IpfsHash) external {
 
@@ -29,4 +33,7 @@ contract addContent{
 
         return Reports[_addr];
     }
+
+
+    
 }

@@ -8,14 +8,12 @@ const main = async () => {
 
     console.log("Deploying contract with address: ", deployer.address)
   
-    const AddContentContractFactory = await hre.ethers.getContractFactory("addContent");
-    const AddContentContract = await AddContentContractFactory.deploy({
-      value: hre.ethers.utils.parseEther("0.001"),
-    });
+    const NFTContractFactory = await hre.ethers.getContractFactory("NFT");
+    const NFTContract = await NFTContractFactory.deploy();
     
-    await AddContentContract.deployed();
+    await NFTContract.deployed();
   
-    console.log("Addcontent Contract address: ", AddContentContract.address);
+    console.log("NFT Contract address: ", NFTContract.address);
   };
   
   const runMain = async () => {
