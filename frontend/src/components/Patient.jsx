@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from 'axios';
+
 
 
 const Patient = (props) => {
@@ -26,21 +26,7 @@ const Patient = (props) => {
   }
 
   const handleListing = async () => {
-    const options = {
-      method: 'POST',
-      url: 'https://testnets-api.opensea.io/v2/orders/goerli/seaport/listings',
-      headers: 
-      {accept: 'application/json', 'content-type': 'application/json'}
-    };
     
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
   }
 
 
@@ -49,37 +35,37 @@ const Patient = (props) => {
 
     <>
 
-      <h1 className='mt-5 text-4xl font-bold text-center '>Patient Dashboard</h1>
-      <div className='flex mt-10 justify-evenly flex-wrap'>
+      <h1 className='mt-10 text-4xl font-bold text-center underline hover:text-gray-400 '>Patient Dashboard</h1>
+      <div className='flex flex-wrap mt-20 justify-evenly'>
 
         {newHashes.map((e, i) => (
 
 
 
 
-          <div key={e} className="max-w-sm mb-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div key={e} className="max-w-sm mb-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
 
             {/* {fruit} {favoriteFruits.indexOf(fruit) !== -1 && '(favorite)'} */}
 
 
 
             <a href="#">
-              <img className="rounded-t-lg" src={`https://gateway.pinata.cloud/ipfs/${e}`} alt="" />
+              <img className="h-40 rounded-t-lg" src={`https://gateway.pinata.cloud/ipfs/${e}`} alt="" />
             </a>
             <div className="p-5">
               <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Report Name</h5>
               </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 text-center">Here are the biggest enterprise technology acquisitions of 2023 so far, in reverse chronological order.</p>
 
 
 
               {
 
 
-                (MintedArr.indexOf(e) !== -1) ? <button className='text-white bg-blue-500 px-4 py-1 rounded-md' data-id={i} onClick={handleListing}> List for Sale </button>
+                (MintedArr.indexOf(e) !== -1) ? <button className='px-4 mx-28 py-1 text-white text-center bg-green-500 rounded-md hover:bg-green-600 ' data-id={i} onClick={handleListing}> Minted </button>
                   :
-                  <button className='text-white bg-blue-500 px-4 py-1 rounded-md' data-id={i} onClick={handleButtonClick}> Mint NFT </button>
+                  <button className='px-4 py-1 text-white text-center bg-blue-500 rounded-md mx-28 hover:bg-blue-600' data-id={i} onClick={handleButtonClick}> Mint NFT </button>
               }
 
               {/* <p>{i}</p> */}

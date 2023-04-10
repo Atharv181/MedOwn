@@ -1,41 +1,62 @@
 
-
 import { useState, useEffect } from "react";
 
 import { ethers } from "ethers";
 
+import Home from './components/Home'
+import PatNav from "./components/PatNav";
+import Govern from "./components/Govern";
+
 import addContent from './artifacts/contracts/addContent.sol/addContent.json';
 import NFT from './artifacts/contracts/NFT.sol/NFT.json'
 
-import Nav from './components/Nav';
-import Doc from './components/Doc';
+// import Doc from './components/Doc'
+import FileUpload from './components/FileUpload'
+import Patient from './components/Patient'
 
-import Patient from './components/Patient';
-import FileUpload from './components/FileUpload';
-// import CardThree from './components/CardThree';
+import { Toaster, toast } from "react-hot-toast";
 
 
-// const getEthereumObject = () => window.ethereum;
 
-// const arr = ['QmaSue39qG6prZUiGWeaDEMMQ1FepkbTr221Ct7FWzdkkR','QmPaQsFTFSwsBLcdSPxNSSL4SMsQc8NV83kv1TDP9haCwq','QmSshV7nZWHZgZiSo1yX9i995a1eNdnsXjJNLoMAn85CnP'];
+
+
+import { useAccount } from "wagmi";
+
 
 function App() {
 
   const [contract, setContract] = useState(null);
   const [contract1, setContract1] = useState(null);
+ 
   const [provider, setProvider] = useState(null);
   const [hashes, sethashes] = useState([]);
-
- 
   const [minted,setminted] = useState([]); 
+  
 
+
+  const {address} = useAccount({
+    onConnect: (address) => {
+
+      toast.success('Wallet Connected!');
+      getAllReportsUI(address.address);
+      getMinted();
+      
+      console.log("Connected",address);
+      
+    },
+    onDisconnect: () => {
+      toast.success('Logged Out Successfully!')
+    }
+  }); 
   const { ethereum } = window;
+  
+ 
 
         useEffect(() => {
     const loadProvider = async () => {
-       let contractAddress = "0xd0ecF06D6Aa3Bd0ECd737F19081e6Bd029A1Fb3b";
-       let contract1Address = "0xe7c9ae474dc81E0D609b775C1511014197B38D03";
-    
+       let contractAddress = "0x9FB29601342445B4644aA41c7712879367E200b9";
+       let contract1Address = "0x82a6afD49815637348FDFfB99801383142230125";
+      
       try {
       
         if (ethereum) {
@@ -43,12 +64,15 @@ function App() {
           const signer = provider.getSigner();
           const contract = new ethers.Contract(contractAddress, addContent.abi, signer);
           const contract1 = new ethers.Contract(contract1Address, NFT.abi, signer);
+         
 
           setContract(contract);
           setContract1(contract1);
+          
           setProvider(provider);
           console.log(contract);
           console.log(contract1);
+          
 
         } else {
           console.log("Ethereum object doesn't exist!")
@@ -63,17 +87,17 @@ function App() {
     loadProvider();
         }, []);
 
- 
-
-
         const UploadFile = async (_address,_IPFShash) => {
 
      
-       const signer = contract.connect(provider.getSigner());
+        const signer = contract.connect(provider.getSigner());
         const receipt = await signer.addReports(_address,_IPFShash);
+        console.log(receipt);
         const tx = await receipt.wait();
 
         console.log("Added",tx);
+        toast.success('File Uploaded Successfully!')
+      
 
 
     
@@ -96,50 +120,62 @@ function App() {
 
           const receipt = await signer.mint(metadataURI, tokenId,inewHash);
           const tx = await receipt.wait();
-          console.log(tx);
-
+          toast('Minted NFT Successfully!', {
+            icon: '👏',
+          });
+          console.log(tx)
+          
            
         };
 
-
-    
-        
         const getMinted  = async () => {
           const mints = await contract1.getAllMinted();
           setminted(mints);
         }
-        
-      
+       
         const getAllReportsUI = async (addr) =>{
           const hash = await contract.getAllReports(addr);
           sethashes(hash);
+          console.log(hash)
         };
 
-        console.log(hashes)
-    
-       
-        
-  
-      
-        
-     
+
     
 
-  
+   
     return (
+
+     
       
     < div className = 'flex-col '>
+    <Toaster position="bottom-right"/>
 
+    {
+      address ?
+     ( <div>
+     <PatNav></PatNav>
+     <Patient hashes = {hashes} mintNFT= {mintNFT} minted={minted}></Patient>
+     <FileUpload UploadFile={UploadFile}></FileUpload>
+     <Govern></Govern>
+      </div>)
+      :
       
-      <Nav getAllReportsUI ={getAllReportsUI} getMinted= {getMinted}></Nav>
+      <div>
+      <Home></Home>
+      
+      </div>
+    } 
+    
+      
+      
 
-      <Doc></Doc>
+      {/* <Doc></Doc>
 
       <FileUpload UploadFile={UploadFile}></FileUpload>
       
-      <Patient hashes = {hashes} mintNFT= {mintNFT} minted={minted}></Patient>
+      <Patient hashes = {hashes} mintNFT= {mintNFT} minted={minted}></Patient>  */}
 
-      {/* <CardThree> </CardThree> */}
+      
 
     </div>
   );
