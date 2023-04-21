@@ -52,7 +52,7 @@ const Govern = (props) => {
           <h1 className="text-gray-700 font-bold mt-4">WhiteListed Hospitals</h1>
           <p>List of all the hospital WhiteListed </p>
         </div>
-        <div className="max-w-md mx-auto mt-8 bg-white shadow-md rounded px-8 p-6 text-center mb-4 cursor-pointer w-1/6" onClick={open4}>
+        <div className="max-w-md mx-auto mt-8 bg-white shadow-md rounded px-8 p-6 text-center mb-4 cursor-pointer w-1/6" onClick={open4} to={"/HospitalList"}>
           <img
             src="https://cdn.iconscout.com/icon/premium/png-512-thumb/denied-6619752-5516357.png?f=avif&w=256"
             alt="Hospitals List"
