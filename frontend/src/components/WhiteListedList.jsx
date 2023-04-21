@@ -5,7 +5,7 @@ function WhiteListedList(props) {
   console.log(length);
   return (
     <>
-      <div style={{"textAlign":"center", "fontSize":"40px"}}>
+      <div style={{"textAlign":"center", "fontSize":"40px"}} className="mt-8">
         List of All Hospitals
       </div>
       <div className="w-2/4 m-auto shadow-md rounded px-8 p-6">

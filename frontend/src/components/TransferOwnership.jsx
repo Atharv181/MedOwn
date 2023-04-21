@@ -15,7 +15,7 @@ const TransferOwnership = (props) => {
     }
  return (
     <>
-    <div className="max-w-2xl mx-auto text-center w-9/12">
+    <div className="max-w-2xl mx-auto text-center w-9/12 mt-8 ">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Transfer Ownership
         </h2>
@@ -72,7 +72,7 @@ const TransferOwnership = (props) => {
       <div className="mt-4 w-6/12 m-auto ">
           <button
             type="submit"
-            className="block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 m-auto"
+            className="block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 m-auto mb-8"
             onClick={transfer}        
           >
             Transfer

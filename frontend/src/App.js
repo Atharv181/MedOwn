@@ -8,6 +8,7 @@ import Govern from "./components/Govern";
 import addContent from './artifacts/contracts/addContent.sol/addContent.json';
 import NFT from './artifacts/contracts/NFT.sol/NFT.json'
 import Base from "./artifacts/contracts/base.sol/Base.json"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import Doc from './components/Doc'
 import FileUpload from './components/FileUpload'
@@ -15,6 +16,7 @@ import Patient from './components/Patient'
 
 import { Toaster, toast } from "react-hot-toast";
 import { useAccount } from "wagmi";
+import WhiteListedList from "./components/WhiteListedList";
 
 
 function App() {
@@ -200,6 +202,11 @@ function App() {
             </div>
           } 
       
+      <BrowserRouter> 
+      <Routes>
+        <Route path="/HospitalList" element={<WhiteListedList />}/>
+      </Routes>
+      </BrowserRouter>
       
           </div>
       

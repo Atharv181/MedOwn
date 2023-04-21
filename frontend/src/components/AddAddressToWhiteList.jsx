@@ -15,12 +15,12 @@ const AddAddressToWhiteList = (props) => {
     }
   return (
     <>
-        <div className="max-w-2xl mx-auto text-center w-9/12">
+        <div className="max-w-2xl mx-auto text-center w-9/12 mt-8">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Add Address to Whitelist
         </h2>
         <p className="mt-2 text-lg leading-8 text-gray-600">
-          This is irreversible action & you are solely responsible
+          This will give Address to hospital Dashboard
         </p>
       </div>
       <div className="mx-auto w-6/12 my-28">
@@ -68,7 +68,7 @@ const AddAddressToWhiteList = (props) => {
             </Switch.Label>
           </Switch.Group>
       </div>
-      <div className="mt-4 w-6/12 m-auto ">
+      <div className="mt-4 w-6/12 m-auto mb-8">
           <button
             type="submit"
             className="block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 m-auto"

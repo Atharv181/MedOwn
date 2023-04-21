@@ -11,10 +11,26 @@ const Govern = (props) => {
     const [showModal2 , setShowModal2] = useState(false);
     const [showModal3 , setShowModal3] = useState(false);
     const [showModal4 , setShowModal4] = useState(false);
-    const open1 = () => setShowModal1(true);
-    const open2 = () => setShowModal2(true);
-    const open3 = () => setShowModal3(true);
-    const open4 = () => setShowModal4(true);
+    const open1 = () => {setShowModal1(true);
+      setShowModal2(false);
+     setShowModal3(false);
+    setShowModal4(false);
+    }
+    const open2 = () => {setShowModal2(true);
+      setShowModal1(false);
+     setShowModal3(false);
+    setShowModal4(false);
+    }
+    const open3 = () => {setShowModal3(true);
+      setShowModal2(false);
+      setShowModal1(false);
+    setShowModal4(false);
+    }
+    const open4 = () => {setShowModal4(true);
+      setShowModal2(false);
+      setShowModal1(false);
+     setShowModal3(false);
+   }
     console.log(props.hospitals);
   return (
     <div >
