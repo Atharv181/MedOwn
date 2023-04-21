@@ -34,7 +34,7 @@ const Govern = (props) => {
     console.log(props.hospitals);
   return (
     <div >
-      <h1 className="mt-10 text-center text-xl font-bold mb-10 underline">
+      <h1 className="mt-10 text-4xl font-bold text-center underline hover:text-gray-400 ">
         Govern Agent{" "}
       </h1>
       <div className="flex">

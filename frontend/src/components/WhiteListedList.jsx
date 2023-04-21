@@ -5,9 +5,13 @@ function WhiteListedList(props) {
   console.log(length);
   return (
     <>
-      <div style={{"textAlign":"center", "fontSize":"40px"}} className="mt-8">
+      <div className="text-3xl font-bold text-center tracking-tight text-gray-900 sm:text-4xl mt-8">
         List of All Hospitals
-      </div>
+        </div>
+        <p className="mt-2 text-lg leading-8 text-gray-600 text-center">
+          Address of all the listed Hospitals
+        </p>
+      
       <div className="w-2/4 m-auto shadow-md rounded px-8 p-6">
         <ul role="list" className="divide-y divide-gray-100">
           {props.hospitalList.map((hospital ,i) => (
