@@ -176,10 +176,7 @@ function App() {
            
             
            <PatNav></PatNav>
-           <Govern RemoveHospital={RemoveHospital} AddToWhitelist={AddToWhitelist} TransferOwnership={TransferOwnership} hospitals={hospitals}></Govern>
-              
-      
-           
+           <Govern RemoveHospital={RemoveHospital} AddToWhitelist={AddToWhitelist} TransferOwnership={TransferOwnership} hospitals={hospitals}></Govern>      
             </div>) :
       
             address && (hospitals.indexOf(address) !== -1) ?

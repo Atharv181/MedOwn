@@ -34,7 +34,10 @@ const Patient = (props) => {
     console.log("In delayed Component")
     console.log(names[`title${i}`])
   return (
-    <h1>{names[`title${i}`]}</h1>
+    <div className="mb-3 font-normal text-center text-gray-700 dark:text-gray-400">
+      <h1>{names[`title${i}`]}</h1>
+      <h1>{names[`desc${i}`]}</h1>
+    </div>
   );
 }
 
@@ -64,9 +67,8 @@ const Patient = (props) => {
     fetchMetadata(hash).then((metadata) => {
       console.log(metadata.rows[0].metadata.name);
       names[`title${i}`] = metadata.rows[0].metadata.name;
-      
+      names[`desc${i}`] = metadata.rows[0].metadata.keyvalues.description;
       console.log(names[`title${i}`]);
-      console.log("Completed");
       
     }
     ).catch((error) => {
@@ -99,7 +101,6 @@ const Patient = (props) => {
     </a>
     <div className="p-5">
     {showComponent && DelayedComponent(i)}
-      <p className="mb-3 font-normal text-center text-gray-700 dark:text-gray-400">Description</p>
     {
         (MintedArr.indexOf(e) !== -1) ? <button className='px-4 py-1 text-center text-white bg-green-500 rounded-md mx-28 hover:bg-green-600 ' data-id={i} > Minted </button>
           :
