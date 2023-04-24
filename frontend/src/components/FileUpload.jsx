@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+require('dotenv').config();
 
 
 const FileUpload = (props) => {
@@ -33,8 +34,8 @@ const FileUpload = (props) => {
       headers: {
         'Content-Type': 'multipart/form-data',
         'Access-Control-Allow-Origin': '*',
-        'pinata_api_key': 'b8c8796c01929bb4ab90',
-        'pinata_secret_api_key':'4ded7777b4b21200816e4ea4f5ec57c4763debd27eedc3ade4ff82707dcbc13e',
+        'pinata_api_key': process.env.pinata_api_key,
+        'pinata_secret_api_key':process.env.pinata_secret_api_key,
       }
     });    
     console.log(response.data.IpfsHash);    
