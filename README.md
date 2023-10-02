@@ -8,7 +8,6 @@ records, ensuring privacy, security, and easy access. Now Patient can earn money
 - [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -32,3 +31,37 @@ To install and run MedOwn, follow these steps:
 
    ```shell
    git clone https://github.com/Atharv181/MedOwn.git
+
+2. Change directory to MedOwn and install project dependencies
+ 
+     ```shell 
+     cd MedOwn
+     npm i
+3. Configure Environment Variables
+   - Create a .env file in the root directory of the project.
+   - Add the following environment variables to the .env file and replace the values accordingly.
+  
+     ```shell
+     
+     METAMASK_PRIVATE_KEY='YOUR_METAMASK_PRIVATE_KEY'
+
+     PINATA_API_KEY='YOUR_PINATA_API_KEY'
+
+     PINATA_SECRETE_KEY='YOUR_PINATA_SECRETE_API_KEY'
+
+     QUICKNODE_URL="YOUR_QUICKNODE_ENDPOINT_URL"
+
+     ALCHEMY_ID='YOUR_ALCHEMY_ID'
+
+Quicknode and Alchemy are Node providers, you can choose according to your convenience, In this project we are going with quicknode.
+
+Note: Make sure you add .env to gitignore file as it contains your metamask private key and other secrete api keys, so that it won't be exposed to the internet.
+
+## Contributing
+
+- Contributions make the open source community such an amazing place to learn, inspire, and create.
+- Any contributions you make are greatly appreciated.
+
+## License
+
+Med-Own is licensed under the MIT License 
